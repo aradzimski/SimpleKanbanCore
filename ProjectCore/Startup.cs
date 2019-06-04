@@ -51,13 +51,19 @@ namespace ProjectCore
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+//            app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "login",
+                    template: "{controller=Login}/{action=Index}");
+                routes.MapRoute(
+                    name: "register",
+                    template: "{controller=Register}/{action=Index}");
             });
         }
     }

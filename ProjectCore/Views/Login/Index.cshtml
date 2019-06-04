@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Logowanie";
+}
+
+<script src="https://apis.google.com/js/platform.js"
+        async
+        defer>
+</script>
+<script>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
+</script>
+
+<div class="text-center">
+    <p>Strona logowania</p>
+</div>
+
+<form action="loginaction">
+    <div class="login-container">
+        <label for="uname">
+            <b>Login</b>
+        </label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+    </div>
+    <div class="login-container">
+
+        <label for="psw">
+            <b>Hasło</b>
+        </label>
+        <input type="password" placeholder="Wprowadź hasło..." name="psw" required>
+    </div>
+    <div class="login-button"><button type="submit">Login</button></div>
+</form>
+<div class="login-button"><div class="g-signin2" data-onsuccess="onSignIn"></div></div>
