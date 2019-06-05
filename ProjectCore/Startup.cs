@@ -6,9 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using ProjectCore.Context;
+using ProjectCore.Models;
 
 namespace ProjectCore
 {
@@ -33,6 +38,14 @@ namespace ProjectCore
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddDbContext<ProjectCoreContext>(options =>
+                options.UseSqlite("DataSource=dbo.ProjectCore.db",
+                    builder => builder.MigrationsAssembly("ProjectCore")
+                ));
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<ProjectCoreContext>()
+                .AddDefaultTokenProviders();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -8,5 +8,11 @@ namespace ProjectCore.Controllers
         {
             return View();
         }
+
+        /*[HttpPost]
+        public IActionResult Login()
+        {
+            
+        }*/
     }
 }
