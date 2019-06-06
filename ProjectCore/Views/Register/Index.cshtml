@@ -8,7 +8,9 @@
 </div>
 
 
-<form asp-action="Index" asp-controller="Register">
+<form method="post" asp-action="Index" asp-controller="Register">
+    <div asp-validation-summary="All"></div>
+    
     <div class="register-container">
         <label>
             <b>Login</b>

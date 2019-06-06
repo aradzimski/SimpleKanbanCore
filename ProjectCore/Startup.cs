@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -45,9 +46,8 @@ namespace ProjectCore
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<ProjectCoreContext>()
                 .AddDefaultTokenProviders();
-           
         }
-
+       
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
@@ -62,6 +62,7 @@ namespace ProjectCore
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 //            app.UseCookiePolicy();

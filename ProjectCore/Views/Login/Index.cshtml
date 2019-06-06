@@ -1,39 +1,37 @@
 @{
     ViewData["Title"] = "Logowanie";
 }
-
-<script src="https://apis.google.com/js/platform.js"
-        async
-        defer>
-</script>
-<script>
-    function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    }
-</script>
+@model LoginViewModel
 
 <div class="text-center">
     <p>Strona logowania</p>
 </div>
 
-<form action="loginaction">
-    <div class="login-container">
-        <label for="uname">
+<form method="post" asp-action="Index" asp-controller="Login">
+    <div asp-validation-summary="All"></div>
+    
+    <div class="register-container">
+        <label>
             <b>Login</b>
         </label>
-        <input type="text" name="uname" required>
+        <input asp-for="UserName">
+        <span asp-validation-for="UserName"></span>
     </div>
-    <div class="login-container">
+    <div class="register-container">
 
-        <label for="psw">
+        <label>
             <b>Hasło</b>
         </label>
-        <input type="password" name="psw" required>
+        <input asp-for="Password">
+        <span asp-validation-for="Password"></span>
     </div>
-    <div class="login-button"><button type="submit">Zaloguj</button></div>
+    <div class="register-container">
+
+        <label>
+            <b>Zapamiętaj mnie</b>
+        </label>
+        <input asp-for="RememberMe">
+        <span asp-validation-for="RememberMe"></span>
+    </div>
+    <div class="register-button"><input type="submit" value="Zaloguj"></input></div>
 </form>
-<div class="login-button"><div class="g-signin2" data-onsuccess="onSignIn"></div></div>

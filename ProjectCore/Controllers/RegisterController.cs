@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ProjectCore.Models;
@@ -17,9 +18,12 @@ namespace ProjectCore.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-        
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
         
@@ -30,10 +34,8 @@ namespace ProjectCore.Controllers
             {
                 return View(vm);
             }
-            var user = new User { UserName = vm.UserName, PasswordHash = vm.Password};
+            var user = new User { UserName = vm.UserName, PasswordHash = vm.Password, IsActive = true};
             var result = await _userManager.CreateAsync(user, vm.Password);
-
-            Debug.WriteLine(result.Errors);
             
             if (result.Succeeded)
             {
