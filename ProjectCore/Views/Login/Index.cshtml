@@ -6,32 +6,33 @@
 <div class="text-center">
     <p>Strona logowania</p>
 </div>
-
-<form method="post" asp-action="Index" asp-controller="Login">
-    <div asp-validation-summary="All"></div>
+<br/>
+<div class="text-center" >
+    <form method="post" asp-action="Index" asp-controller="Login">
+        <div asp-validation-summary="All"></div>
     
-    <div class="register-container">
-        <label>
-            <b>Login</b>
-        </label>
-        <input asp-for="UserName">
-        <span asp-validation-for="UserName"></span>
-    </div>
-    <div class="register-container">
+        <div class="register-container">
+            <label class="form-label">
+                <b>Login</b>
+            </label>
+            <input class="form-input" asp-for="UserName">
+        </div>
+        <div class="register-container">
 
-        <label>
-            <b>Hasło</b>
-        </label>
-        <input asp-for="Password">
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div class="register-container">
-
-        <label>
-            <b>Zapamiętaj mnie</b>
-        </label>
-        <input asp-for="RememberMe">
-        <span asp-validation-for="RememberMe"></span>
-    </div>
-    <div class="register-button"><input type="submit" value="Zaloguj"></input></div>
-</form>
+            <label class="form-label">
+                <b>Hasło</b>
+            </label>
+            <input class="form-input" asp-for="Password">
+        </div>
+        <div class="register-container">
+            <br/>
+            <label class="form-label">
+                <b>Zapamiętaj mnie</b>
+            </label>
+            <input asp-for="RememberMe">
+            <span asp-validation-for="RememberMe"></span>
+        </div>
+        <br/>
+        <div class="register-button"><input type="submit" class="button-big" value="Zaloguj"></input></div>
+    </form>
+</div>

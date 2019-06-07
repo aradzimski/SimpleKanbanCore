@@ -1,0 +1,182 @@
+@{
+    ViewData["Title"] = "Kanban board";
+}
+
+<div class="tables" align="center">
+    <div class="table-column">
+        <table class="task-view">
+            <tr>
+                <th>To do</th>
+            </tr>
+            {% if todo is defined %}
+                {% for todo_t in todo %}
+                    <tr>
+                        <td>
+                            <div class="task-block" id="{{ todo_t.id }}" onClick="edit_task(this.id)">
+                                <div class="task-block-sections">
+                                    <div class="section-name">{{ todo_t.name }}</div>
+                                    <br/>
+                                    <div class="section-date">{{ todo_t.date|date('d-M-Y H:i') }}</div>
+                                    <br/>
+                                    <div class="section-reporter">Zlecający: {% if users is defined %}
+                                            {% for user in users %}
+                                                {% if user.id is same as (todo_t.reporter) %}
+                                                    {{ user.username }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="section-id">{{ todo_t.id }}</div>
+                                    {% if todo_t.type is same as (0) %}
+                                        <div class="section-type"><img src="{{ asset('images/task.png') }}"/></div>
+                                    {% endif %}
+                                    {% if todo_t.type is same as (1) %}
+                                        <div class="section-type"><img src="{{ asset('images/subtask.png') }}"/></div>
+                                    {% endif %}
+                                    {% if todo_t.type is same as (2) %}
+                                        <div class="section-type"><img src="{{ asset('images/epic.png') }}"/></div>
+                                    {% endif %}
+                                    {% if todo_t.type is same as (3) %}
+                                        <div class="section-type"><img src="{{ asset('images/support.png') }}"/></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+    </div>
+    <div class="table-column">
+        <table class="task-view">
+            <tr>
+                <th>In Progress</th>
+            </tr>
+            {% if inprogress is defined %}
+                {% for inprogress_t in inprogress %}
+                    <tr>
+                        <td>
+                            <div class="task-block" id="{{ inprogress_t.id }}" onClick="edit_task(this.id)">
+                                <div class="task-block-sections">
+                                    <div class="section-name">{{ inprogress_t.name }}</div>
+                                    <br/>
+                                    <div class="section-date">{{ inprogress_t.date|date('d-M-Y H:i') }}</div>
+                                    <br/>
+                                    <div class="section-reporter">Zlecający: {% if users is defined %}
+                                            {% for user in users %}
+                                                {% if user.id is same as (inprogress_t.reporter) %}
+                                                    {{ user.username }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="section-id">{{ inprogress_t.id }}</div>
+                                    {% if inprogress_t.type is same as (0) %}
+                                        <div class="section-type"><img src="{{ asset('images/task.png') }}"/></div>
+                                    {% endif %}
+                                    {% if inprogress_t.type is same as (1) %}
+                                        <div class="section-type"><img src="{{ asset('images/subtask.png') }}"/></div>
+                                    {% endif %}
+                                    {% if inprogress_t.type is same as (2) %}
+                                        <div class="section-type"><img src="{{ asset('images/epic.png') }}"/></div>
+                                    {% endif %}
+                                    {% if inprogress_t.type is same as (3) %}
+                                        <div class="section-type"><img src="{{ asset('images/support.png') }}"/></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+    </div>
+    <div class="table-column">
+        <table class="task-view">
+            <tr>
+                <th>Awaiting</th>
+            </tr>
+            {% if awaiting is defined %}
+                {% for awaiting_t in awaiting %}
+                    <tr>
+                        <td>
+                            <div class="task-block" id="{{ awaiting_t.id }}" onClick="edit_task(this.id)">
+                                <div class="task-block-sections">
+                                    <div class="section-name">{{ awaiting_t.name }}</div>
+                                    <br/>
+                                    <div class="section-date">{{ awaiting_t.date|date('d-M-Y H:i') }}</div>
+                                    <br/>
+                                    <div class="section-reporter">Zlecający: {% if users is defined %}
+                                            {% for user in users %}
+                                                {% if user.id is same as (awaiting_t.reporter) %}
+                                                    {{ user.username }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="section-id">{{ awaiting_t.id }}</div>
+                                    {% if awaiting_t.type is same as (0) %}
+                                        <div class="section-type"><img src="{{ asset('images/task.png') }}"/></div>
+                                    {% endif %}
+                                    {% if awaiting_t.type is same as (1) %}
+                                        <div class="section-type"><img src="{{ asset('images/subtask.png') }}"/></div>
+                                    {% endif %}
+                                    {% if awaiting_t.type is same as (2) %}
+                                        <div class="section-type"><img src="{{ asset('images/epic.png') }}"/></div>
+                                    {% endif %}
+                                    {% if awaiting_t.type is same as (3) %}
+                                        <div class="section-type"><img src="{{ asset('images/support.png') }}"/></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+    </div>
+    <div class="table-column">
+        <table class="task-view">
+            <tr>
+                <th>Testing</th>
+            </tr>
+            {% if testing is defined %}
+                {% for testing_t in testing %}
+                    <tr>
+                        <td>
+                            <div class="task-block" id="{{ testing_t.id }}" onClick="edit_task(this.id)">
+                                <div class="task-block-sections">
+                                    <div class="section-name">{{ testing_t.name }}</div>
+                                    <br/>
+                                    <div class="section-date">{{ testing_t.date|date('d-M-Y H:i') }}</div>
+                                    <br/>
+                                    <div class="section-reporter">Zlecający: {% if users is defined %}
+                                            {% for user in users %}
+                                                {% if user.id is same as (testing_t.reporter) %}
+                                                    {{ user.username }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="section-id">{{ testing_t.id }}</div>
+                                    {% if testing_t.type is same as (0) %}
+                                        <div class="section-type"><img src="{{ asset('images/task.png') }}"/></div>
+                                    {% endif %}
+                                    {% if testing_t.type is same as (1) %}
+                                        <div class="section-type"><img src="{{ asset('images/subtask.png') }}"/></div>
+                                    {% endif %}
+                                    {% if testing_t.type is same as (2) %}
+                                        <div class="section-type"><img src="{{ asset('images/epic.png') }}"/></div>
+                                    {% endif %}
+                                    {% if testing_t.type is same as (3) %}
+                                        <div class="section-type"><img src="{{ asset('images/support.png') }}"/></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+    </div>
+</div>

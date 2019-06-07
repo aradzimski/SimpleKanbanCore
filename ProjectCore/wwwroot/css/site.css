@@ -54,3 +54,295 @@ body {
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/* Styl tablicy Kanban */
+
+/* Header */
+
+div.header {
+  border-color: #cbcbcb;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 1px;
+  padding: 5px;
+  box-shadow: 3px 3px 5px 1px rgba(191, 191, 191, 0.71);
+}
+
+div.menu {
+  width: 25%;
+  display: inline-block;
+  color: black;
+  text-align: center;
+  font: 18px Calibri, sans-serif;
+  font-weight: bold;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+  border-radius: 1px;
+}
+
+div.menu:hover {
+  background-color: rgba(75, 126, 255, 0.9);
+}
+
+div.menu-disabled {
+  width: 25%;
+  display: inline-block;
+  color: black;
+  text-align: center;
+  font: 18px Calibri, sans-serif;
+  font-weight: bold;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 1px;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+/* Formularz logowania */
+
+div.form_login {
+  margin-top: 20%;
+}
+
+input.form-input {
+  font: 16px Calibri, sans-serif;
+  border: none;
+  border-bottom: 2px solid rgb(75, 126, 255);
+  border-radius: 4px;
+  position: relative;
+  left: 9px;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  padding: 7px;
+}
+
+input.form-input:focus {
+  outline: none;
+  background-color: rgba(75, 126, 255, 0.20);
+}
+
+label.login-title {
+  font: 24px Calibri, sans-serif;
+  position: relative;
+  bottom: 40px;
+}
+
+label.form-label {
+  font: 15px Calibri, sans-serif;
+}
+
+/* Widok zadań */
+
+table.task-view {
+  width: 80%;
+}
+
+table.task-view th {
+  font: 20px Calibri, sans-serif;
+  height: 100px;
+}
+
+table.task-view td {
+  height: 180px;
+}
+
+div.tables {
+  width: 100%;
+}
+
+div.table-column {
+  background-color: #f3f4f6;
+  width: 20%;
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+  border-radius: 7px;
+}
+
+div.task-block {
+  width: 96%;
+  height: 170px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1px;
+  padding: 7px;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: 0 0 2px 0px rgba(9, 30, 66, 0.25);
+  font: 15px Calibri, sans-serif;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  position: relative;
+  margin-bottom: 5px;
+}
+
+div.task-block:hover {
+  background-color: #f7f8fa;
+}
+
+div.task-block-sections {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+div.section-title {
+
+}
+
+div.section-date {
+  color: #5f5f5f;
+}
+
+div.section-id {
+  font: 16px Calibri, sans-serif;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(191, 191, 191, 0.71);
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
+}
+
+div.section-type {
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 8px;
+  right: 0;
+  margin-right: 14px;
+}
+
+
+/* Zadania */
+div.task-window {
+  width: 30%;
+  height: 65%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  border: 1px solid rgba(127, 127, 127, 0.49);
+  background: rgba(255, 255, 255, 0.96);
+  overflow-y: auto;
+  position: absolute;
+  max-height: 700px;
+  font: 15px Calibri, sans-serif;
+  text-align: left;
+  font-weight: bold;
+  border-radius: 3px;
+  margin: auto;
+}
+
+div.task-window-background {
+  width: 95%;
+  height: 95%;
+  background: #fafbfd;
+  border-radius: 3px;
+  padding: 15px;
+}
+
+div.mini_menu {
+  height: 10%;
+  width: 100%;
+}
+
+div.icon_save {
+  float: right
+}
+
+div.icon_cancel {
+  float: left
+}
+
+textarea.form-input-big {
+  font: 16px Calibri, sans-serif;
+  border: none;
+  border-bottom: 2px solid rgb(75, 126, 255);
+  border-radius: 4px;
+  position: relative;
+  left: 8px;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  padding: 7px;
+  resize: none;
+}
+
+textarea.form-input-big:focus {
+  outline: none;
+  background-color: rgba(75, 126, 255, 0.20);
+}
+
+select.form-input-select {
+  margin-left: 12px;
+  margin-bottom: 1em;
+  border: 0;
+  padding: 6px;
+  border-bottom: 2px solid #4a4a4a;
+  font: 13px Calibri, sans-serif;
+  border-radius: 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select.form-input-select:focus,
+select.form-input-select:active {
+  outline: none;
+  border-bottom-color: rgb(75, 126, 255);
+}
+
+/* Ustawienia */
+
+div.form_add_user {
+  width:20%;
+}
+
+/* Ogólne */
+
+div.main_content {
+  transition: all 0.3s ease-out;
+}
+
+div.subpage {
+  padding: 30px;
+}
+
+div.error {
+  width: 100%;
+  background-color: rgba(209, 22, 22, 0.75);
+  border-color: rgba(209, 22, 22, 0.75);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 9px;
+  text-align: center;
+  font: 24px Calibri, sans-serif
+}
+
+input.button-big {
+  background-color: white;
+  border: 2px solid rgb(75, 126, 255);
+  border-radius: 4px;
+  color: black;
+  padding: 7px 25px;
+  font: 24px Calibri, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+input.button-big:hover {
+  background-color: rgba(75, 126, 255, 0.15);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+input.button-big:focus {
+  outline: none;
+}

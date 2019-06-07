@@ -6,25 +6,25 @@
 <div class="text-center">
     <p>Zakładanie konta</p>
 </div>
-
-
-<form method="post" asp-action="Index" asp-controller="Register">
-    <div asp-validation-summary="All"></div>
+<br/>
+<div class="text-center" >
+    <form method="post" asp-action="Index" asp-controller="Register">
+        <div asp-validation-summary="All"></div>
     
-    <div class="register-container">
-        <label>
-            <b>Login</b>
-        </label>
-        <input asp-for="UserName">
-        <span asp-validation-for="UserName"></span>
-    </div>
-    <div class="register-container">
+        <div class="register-container">
+            <label class="form-label">
+                <b>Login</b>
+            </label>
+            <input class="form-input" asp-for="UserName">
+        </div>
+        <div class="register-container">
 
-        <label>
-            <b>Hasło</b>
-        </label>
-        <input asp-for="Password">
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div class="register-button"><input type="submit" value="Zarejestruj"></input></div>
-</form>
+            <label class="form-label">
+                <b>Hasło</b>
+            </label>
+            <input class="form-input" asp-for="Password">
+        </div>
+        <br/>
+        <div class="register-button"><input type="submit" class="button-big" value="Zarejestruj"></input></div>
+    </form>
+</div>
