@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -30,13 +31,9 @@ namespace ProjectCore.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 User user = await userManager.GetUserAsync(HttpContext.User);
-                var tasks = taskRepository.GetAll();
-                foreach (var task in tasks.Result)
-                {
-                    Debug.WriteLine("Taski" + task.name);
-                }
+                var tasks = new TasksList(taskRepository.GetUserTasks(user).Result);
 
-                return View();
+                return View(@"~/Views/Kanban/Index.cshtml", tasks);
             }
             else
             {

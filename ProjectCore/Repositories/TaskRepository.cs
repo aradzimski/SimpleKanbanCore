@@ -1,11 +1,14 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using ProjectCore.Context;
+using ProjectCore.Models;
 using ETask = ProjectCore.Models.Task;
+using Task = System.Threading.Tasks.Task;
 
 namespace ProjectCore.Repositories
 {
@@ -29,6 +32,15 @@ namespace ProjectCore.Repositories
             var result = await _projectCoreContext.Task
                 .Where(x => x.Id == id)
                 .SingleOrDefaultAsync();
+            return result;
+        }
+
+        public async Task<IEnumerable<ETask>> GetUserTasks(User user)
+        {
+            var result = await _projectCoreContext.Task
+                .Include(task => task.type)
+                .Where((x => x.assignee == user))
+                .ToListAsync();
             return result;
         }
 

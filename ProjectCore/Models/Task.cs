@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Microsoft.IdentityModel.Tokens.Saml;
+
 namespace ProjectCore.Models
 {
     public class Task : Entity
