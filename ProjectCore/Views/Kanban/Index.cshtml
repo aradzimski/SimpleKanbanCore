@@ -20,7 +20,7 @@
              {
                 <tr>
                     <td>
-                        <div class="task-block">
+                       <div class="task-block" id="@todo.Id" onclick="location.href='Task/Edit/@todo.Id'">
                             <div class="task-block-sections">
                                 <div class="section-name">@todo.name</div>
                                 <br/>
@@ -64,7 +64,7 @@
                 {
                     <tr>
                         <td>
-                            <div class="task-block">
+                            <div class="task-block" id="@inprogress.Id" onclick="location.href='Task/Edit/@inprogress.Id'">
                                 <div class="task-block-sections">
                                     <div class="section-name">@inprogress.name</div>
                                     <br/>
@@ -108,7 +108,7 @@
                 {
                     <tr>
                         <td>
-                            <div class="task-block">
+                            <div class="task-block" id="@awaiting.Id" onclick="location.href='Task/Edit/@awaiting.Id'">
                                 <div class="task-block-sections">
                                     <div class="section-name">@awaiting.name</div>
                                     <br/>
@@ -152,7 +152,7 @@
                 {
                     <tr>
                         <td>
-                            <div class="task-block">
+                            <div class="task-block" id="@testing.Id" onclick="location.href='Task/Edit/@testing.Id'">
                                 <div class="task-block-sections">
                                     <div class="section-name">@testing.name</div>
                                     <br/>

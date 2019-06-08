@@ -71,6 +71,12 @@ namespace ProjectCore
                 routes.MapRoute(
                     name: "register",
                     template: "{controller=Register}/{action=Index}");
+                routes.MapRoute(
+                    name: "add",
+                    template: "{controller=Task}/{action=Add}");
+                routes.MapRoute(
+                    name: "edit",
+                    template: "{controller=Task}/{action=Edit}/{id?}");
             });
         }
     }
