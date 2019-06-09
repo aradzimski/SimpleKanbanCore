@@ -82,7 +82,7 @@ namespace ProjectCore.Repositories
             }
         }
 
-        public async Task Delete(long id)
+        public Task Delete(long id)
         {
             throw new System.NotImplementedException();
         }
