@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens.Saml;
+using ProjectCore.Context;
 using ProjectCore.Models;
 using ProjectCore.Repositories;
 using Task = ProjectCore.Models.Task;
@@ -58,8 +59,6 @@ namespace ProjectCore.Controllers
         {
             if (ModelState.IsValid)
             {
-                Debug.WriteLine("Nazwa: " + vm.name + " Opis: " + vm.description + " Typ: " + vm.type + " Status: " + vm.state + " Osoba wykonująca: " + vm.assignee);
-                
                 TaskType type = await taskTypeRepository.GetById(vm.type);
                 User reporter = await userManager.GetUserAsync(HttpContext.User);
                 User assignee= await userManager.FindByIdAsync(vm.assignee);
@@ -79,17 +78,67 @@ namespace ProjectCore.Controllers
             return View(vm);
         }
         
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(long id)
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {   
+                Task task = await taskRepository.GetById(id);
+                ViewData["TaskId"] = task.Id;
+                ViewData["TaskName"] = task.name;
+                ViewData["TaskDescription"] = task.description;
+                ViewData["TaskReporter"] = task.reporter.UserName;
+                
+                var types = taskTypeRepository.GetAll().Result;
+                ViewData["TaskTypes"] = new SelectList(types, "Id", "name", task.type.Id);
+
+                var users = await userManager.Users.ToListAsync();
+                ViewData["Users"] = new SelectList(users, "Id", "UserName", task.assignee.Id);
+
+                List<object> stateslist = new List<object>();
+                stateslist.Add(new {Id = 0, name = "To Do"});
+                stateslist.Add(new {Id = 1, name = "In progress"});
+                stateslist.Add(new {Id = 2, name = "Awaiting"});
+                stateslist.Add(new {Id = 3, name = "Testing"});
+                stateslist.Add(new {Id = 4, name = "Done"});
+                IEnumerable<object> states = stateslist;
+                ViewData["States"] = new SelectList(states, "Id", "name", task.state);
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
         
-        /*public IActionResult actionEdit()
+        [HttpPost]
+        public async Task<IActionResult> Edit(TaskEditViewModel vm, long id)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                TaskType type = await taskTypeRepository.GetById(vm.type);
+                User reporter = await userManager.GetUserAsync(HttpContext.User);
+                User assignee= await userManager.FindByIdAsync(vm.assignee);
+                
+                Task task = new Task();
+                task.Id = id;
+                
+                task.name = vm.name;
+                task.description = vm.description;
+                task.type = type;
+                task.reporter = reporter;
+                task.assignee = assignee;
+                task.state = vm.state;
+                
+                await taskRepository.Update(task);
+                return RedirectToAction("Index", "Kanban");
+            }
+
+            return View(vm);
         }
         
-        public IActionResult Delete()
+        /*[HttpPost]
+        public async Task<IActionResult> Delete()
         {
             return View();
         }*/

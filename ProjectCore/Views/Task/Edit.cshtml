@@ -1,3 +1,54 @@
 @{
     ViewData["Title"] = "Edycja zadania";
 }
+
+@model TaskEditViewModel
+
+<div class="text-center" >
+    <form method="post" asp-action="Edit" asp-controller="Task">
+        <div asp-validation-summary="All"></div>
+        <br/>
+
+        <div>
+            <label class="form-label">
+                <b>Tytuł</b>
+            </label>
+            <input class="form-input" asp-for="name" value="@ViewBag.TaskName"></div>
+        <br/>
+        <div>
+            <label class="form-label">
+                <b>Opis</b>
+            </label>
+            <textarea id="@Html.IdFor(m => m.description)" name="@Html.NameFor(m => m.description)" rows="20" class="form-input-big">@ViewBag.TaskDescription</textarea></div>
+        <br/>
+        <div>
+            <label class="form-label">
+                <b>Typ zadania</b>
+            </label>
+            <select class="form-input-select" asp-for="type" asp-items="ViewBag.TaskTypes"></select></div>
+        <br/>
+        <div>
+            <label class="form-label">
+                <b>Zlecający: </b>
+            </label>
+            @*<input class="form-input" value="@ViewBag.TaskReporter" disabled></div>*@
+        <br/>
+        <div>
+            <label class="form-label">
+                <b>Wykonawca</b>
+            </label>
+            <select class="form-input-select" asp-for="assignee" asp-items="ViewBag.Users"></select></div>
+        <br/>
+        <div>
+            <label class="form-label">
+                <b>Status</b>
+            </label>
+            <select class="form-input-select" asp-for="state" asp-items="ViewBag.States"></select></div>
+        <br/>
+        <div class="register-button"><input type="submit" class="button-big" value="Zapisz"></input></div>
+    </form>
+    @*<br/>
+    <form method="post" asp-action="Delete" asp-controller="Task">
+        <div class="register-button"><input type="submit" class="button-big" value="Usuń zadanie"></input></div>
+    </form>*@
+</div>
