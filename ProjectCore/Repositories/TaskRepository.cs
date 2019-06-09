@@ -39,14 +39,21 @@ namespace ProjectCore.Repositories
         {
             var result = await _projectCoreContext.Task
                 .Include(task => task.type)
+                .Include(task => task.assignee)
+                .Include(task => task.reporter)
                 .Where((x => x.assignee == user))
                 .ToListAsync();
             return result;
         }
 
-        public async Task Add(ETask entity)
+        public async Task Add(ETask task)
         {
-            throw new System.NotImplementedException();
+            task.DateOfCreation = DateTime.Now;
+            task.DateOfUpdate = DateTime.Now;
+            var result = await _projectCoreContext.Task
+                .FirstAsync();
+            await _projectCoreContext.Task.AddAsync(task);
+            await _projectCoreContext.SaveChangesAsync();
         }
 
         public async Task Update(ETask entity)

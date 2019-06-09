@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens.Saml;
 namespace ProjectCore.Models
 {
     public class Task : Entity
-    {
+    {   
         public string name { get; set; }
         public string description { get; set; }
         public TaskType type { get; set; }

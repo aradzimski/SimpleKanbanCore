@@ -1,3 +1,44 @@
 @{
     ViewData["Title"] = "Tworzenie zadania";
 }
+
+@model TaskAddViewModel
+
+<div class="text-center" >
+    <form method="post" asp-action="Add" asp-controller="Task">
+        <div asp-validation-summary="All"></div>
+        <br/>
+
+        <div>
+            <label class="form-label">
+                <b>Tytuł</b>
+            </label>
+            <input class="form-input" asp-for="name"></div>
+        <br/>
+        <div>
+            <label class="form-label">
+                <b>Opis</b>
+            </label>
+            <textarea rows="20" class="form-input-big" asp-for="description"></textarea></div>
+        <br/>
+        <div>
+            <label class="form-label">
+                <b>Typ zadania</b>
+            </label>
+            <select class="form-input-select" asp-for="type" asp-items="ViewBag.TaskTypes"></select></div>
+        <br/>
+        <div>
+            <label class="form-label">
+                <b>Wykonawca</b>
+            </label>
+            <select class="form-input-select" asp-for="assignee" asp-items="ViewBag.Users"></select></div>
+        <br/>
+        <div>
+            <label class="form-label">
+                <b>Status</b>
+            </label>
+            <select class="form-input-select" asp-for="state" asp-items="ViewBag.States"></select></div>
+        <br/>
+        <div class="register-button"><input type="submit" class="button-big" value="Dodaj zadanie"></input></div>
+    </form>
+</div>

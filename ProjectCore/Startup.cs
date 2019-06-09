@@ -39,6 +39,7 @@ namespace ProjectCore
                 .AddEntityFrameworkStores<ProjectCoreContext>()
                 .AddDefaultTokenProviders();
             services.AddTransient<TaskRepository, TaskRepository>(); 
+            services.AddTransient<TaskTypeRepository, TaskTypeRepository>(); 
         }
        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

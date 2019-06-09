@@ -258,7 +258,7 @@ div.icon_cancel {
   float: left
 }
 
-textarea.form-input-big {
+.form-input-big {
   font: 16px Calibri, sans-serif;
   border: none;
   border-bottom: 2px solid rgb(75, 126, 255);
@@ -271,12 +271,12 @@ textarea.form-input-big {
   resize: none;
 }
 
-textarea.form-input-big:focus {
+.form-input-big:focus {
   outline: none;
   background-color: rgba(75, 126, 255, 0.20);
 }
 
-select.form-input-select {
+.form-input-select {
   margin-left: 12px;
   margin-bottom: 1em;
   border: 0;
